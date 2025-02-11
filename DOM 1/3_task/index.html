@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Изменение текста</title>
+</head>
+<body>
+    <p id="textParagraph">Это начальный текст.</p>
+    <button id="changeTextButton">Изменить текст</button>
+
+    <script>
+        const paragraph = document.getElementById('textParagraph');
+        const button = document.getElementById('changeTextButton');
+
+        button.addEventListener('click', function() {
+            paragraph.textContent = 'Текст успешно изменен';
+        });
+    </script>
+</body>
+</html>

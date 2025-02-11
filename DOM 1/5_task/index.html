@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Увеличение значения кнопки</title>
+</head>
+<body>
+    <button id="incrementButton">1</button>
+    <script>
+        const button = document.getElementById('incrementButton');
+        button.addEventListener('click', function() {
+            let currentValue = parseInt(button.textContent, 10);
+            button.textContent = currentValue + 1;
+        });
+    </script>
+</body>
+</html>

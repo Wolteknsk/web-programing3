@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавление значения инпута в абзац</title>
+</head>
+<body>
+    <input type="text" id="myInput" placeholder="Введите текст">
+    <p id="textParagraph">Начальный текст: </p>
+
+    <script>
+        const input = document.getElementById('myInput');
+        const paragraph = document.getElementById('textParagraph');
+        input.addEventListener('blur', function() {
+            const inputValue = input.value;
+            if (inputValue.trim() !== '') {
+                paragraph.textContent += inputValue + ' ';
+            }
+        });
+    </script>
+</body>
+</html>

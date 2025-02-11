@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вывод значения href</title>
+</head>
+<body>
+    <a id="myLink" href="https://example.com">Перейти на сайт</a>
+    <button id="getHrefButton">Получить значение href</button>
+    <p id="resultParagraph"></p>
+
+    <script>
+        const link = document.getElementById('myLink');
+        const button = document.getElementById('getHrefButton');
+        const paragraph = document.getElementById('resultParagraph');
+        button.addEventListener('click', function() {
+            const hrefValue = link.getAttribute('href');
+            paragraph.textContent = 'Содержимое атрибута href: ' + hrefValue;
+        });
+    </script>
+</body>
+</html>
