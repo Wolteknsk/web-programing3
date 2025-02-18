@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задания</title>
+</head>
+<body>
+    <!-- Задание 1 -->
+    <h2>Задание 1: Добавление li с текстом 'item'</h2>
+    <ol id="list1"></ol>
+    <button id="addItemButton">Добавить item</button>
+
+    <!-- Задание 2 -->
+    <h2>Задание 2: Добавление li и добавление ! по клику</h2>
+    <ol id="list2"></ol>
+    <button id="addLiButton">Добавить li</button>
+
+    <!-- Задание 3 -->
+    <h2>Задание 3: Вставка 10 li с порядковыми номерами</h2>
+    <ul id="list3"></ul>
+
+    <!-- Задание 4 -->
+    <h2>Задание 4: Удаление li по клику</h2>
+    <ul id="list4">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+
+    <!-- Задание 5 -->
+    <h2>Задание 5: Вставка start и finish</h2>
+    <ul id="list5"></ul>
+
+    <!-- Задание 6 -->
+    <h2>Задание 6: Клонирование инпута</h2>
+    <input type="text" id="inputToClone" placeholder="Клонируемый инпут">
+    <button id="cloneInputButton">Клонировать инпут</button>
+
+    <!-- Задание 7 -->
+    <h2>Задание 7: Проверка на абзац</h2>
+    <p id="paragraphCheck">Это абзац</p>
+    <div id="divCheck">Это не абзац</div>
+    <p id="resultCheck"></p>
+
+    <script>
+        // Задание 1
+        document.getElementById('addItemButton').addEventListener('click', function() {
+            const ol = document.getElementById('list1');
+            const newItem = document.createElement('li');
+            newItem.textContent = 'item';
+            ol.appendChild(newItem);
+        });
+
+        // Задание 2
+        document.getElementById('addLiButton').addEventListener('click', function() {
+            const ol = document.getElementById('list2');
+            const newLi = document.createElement('li');
+            newLi.textContent = 'Новый элемент';
+            ol.appendChild(newLi);
+
+            newLi.addEventListener('click', function() {
+                this.textContent += '!';
+            });
+        });
+
+        // Задание 3
+        const ul = document.getElementById('list3');
+        for (let i = 1; i <= 10; i++) {
+            const li = document.createElement('li');
+            li.textContent = i;
+            ul.appendChild(li);
+        }
+
+        // Задание 4
+        const list4 = document.getElementById('list4');
+        list4.addEventListener('click', function(event) {
+            if (event.target.tagName === 'LI') {
+                event.target.remove();
+            }
+        });
+
+        // Задание 5
+        const list5 = document.getElementById('list5');
+        const startLi = document.createElement('li');
+        startLi.textContent = 'start';
+        list5.prepend(startLi);
+
+        const finishLi = document.createElement('li');
+        finishLi.textContent = 'finish';
+        list5.appendChild(finishLi);
+
+        // Задание 6
+        document.getElementById('cloneInputButton').addEventListener('click', function() {
+            const originalInput = document.getElementById('inputToClone');
+            const clonedInput = originalInput.cloneNode(true);
+            originalInput.parentNode.insertBefore(clonedInput, originalInput.nextSibling);
+        });
+
+        // Задание 7
+        const paragraphCheck = document.getElementById('paragraphCheck');
+        const divCheck = document.getElementById('divCheck');
+        const resultCheck = document.getElementById('resultCheck');
+
+        const isParagraph = (element) => element.tagName === 'P';
+
+        resultCheck.textContent = `Элемент с id "paragraphCheck" является абзацем: ${isParagraph(paragraphCheck)}\n`;
+        resultCheck.textContent += `Элемент с id "divCheck" является абзацем: ${isParagraph(divCheck)}`;
+    </script>
+</body>
+</html>

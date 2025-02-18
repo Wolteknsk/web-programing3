@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задания</title>
+</head>
+<body>
+    <!-- Задание 1 -->
+    <h2>Задание 1: Инпуты и Map</h2>
+    <input type="text" placeholder="Инпут 1">
+    <input type="text" placeholder="Инпут 2">
+    <input type="text" placeholder="Инпут 3">
+
+    <!-- Задание 2 -->
+    <h2>Задание 2: Абзацы и кнопка</h2>
+    <p>Абзац 1</p>
+    <p>Абзац 2</p>
+    <p>Абзац 3</p>
+    <button id="addExclamationButton">Добавить !</button>
+
+    <!-- Задание 3 -->
+    <h2>Задание 3: Список пользователей из JSON</h2>
+    <ul id="userList"></ul>
+
+    <!-- Задание 4 -->
+    <h2>Задание 4: Изменение имени второго пользователя</h2>
+    <p id="updatedUser"></p>
+
+    <!-- Задание 5 -->
+    <h2>Задание 5: Получение городов в формате JSON</h2>
+    <ul id="cityList">
+        <li>city1</li>
+        <li>city2</li>
+        <li>city3</li>
+        <li>city4</li>
+    </ul>
+    <p id="cityJsonResult"></p>
+
+    <script>
+        // Задание 1
+        const inputs = document.querySelectorAll('input');
+        const inputMap = new Map();
+
+        inputs.forEach((input, index) => {
+            inputMap.set(input, index + 1); 
+            input.addEventListener('click', () => {
+                input.value = inputMap.get(input); 
+            });
+        });
+
+        // Задание 2
+        const paragraphs = document.querySelectorAll('p');
+        const clickedParagraphs = new Set();
+
+        paragraphs.forEach(paragraph => {
+            paragraph.addEventListener('click', () => {
+                clickedParagraphs.add(paragraph); 
+            });
+        });
+
+        document.getElementById('addExclamationButton').addEventListener('click', () => {
+            clickedParagraphs.forEach(paragraph => {
+                paragraph.textContent += '!'; 
+            });
+        });
+
+        // Задание 3
+        let jsonUsers = '["user1","user2","user3","user4","user5"]';
+        const users = JSON.parse(jsonUsers); 
+        const userList = document.getElementById('userList');
+
+        users.forEach(user => {
+            const li = document.createElement('li');
+            li.textContent = user;
+            userList.appendChild(li);
+        });
+
+        // Задание 4
+        let jsonUsers2 = '["user1","user2","user3","user4","user5"]';
+        const usersArray = JSON.parse(jsonUsers2); 
+        usersArray[1] = 'newUser2'; 
+        const updatedJson = JSON.stringify(usersArray); 
+
+        document.getElementById('updatedUser').textContent = `Обновленный JSON: ${updatedJson}`;
+
+        // Задание 5
+        const cityList = document.getElementById('cityList');
+        const cities = Array.from(cityList.children).map(city => city.textContent); 
+        const cityJson = JSON.stringify(cities); 
+
+        document.getElementById('cityJsonResult').textContent = `JSON городов: ${cityJson}`;
+    </script>
+</body>
+</html>

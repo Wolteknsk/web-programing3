@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Все задания</title>
+    <style>
+        #myDiv1, #myDiv2, #myParagraph3, #myParagraph4, #myParagraph6, #myParagraph7 {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: lightgray;
+        }
+        textarea, input, button {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Задание 1 -->
+    <div id="myDiv1">Див 1</div>
+    <button onclick="styleDiv1()">Изменить стиль дива 1</button>
+
+    <!-- Задание 2 -->
+    <div id="myDiv2">Текст</div>
+    <button onclick="styleDiv2()">Изменить стиль дива 2</button>
+
+    <!-- Задание 3 -->
+    <p id="myParagraph3">Этот текст можно изменить.</p>
+    <button onclick="strikeThrough()">Перечеркнуть</button>
+    <button onclick="makeBold()">Сделать жирным</button>
+    <button onclick="makeRed()">Сделать красным</button>
+
+    <!-- Задание 4 -->
+    <textarea id="myTextarea"></textarea>
+    <p id="myParagraph4"></p>
+
+    <!-- Задание 5 -->
+    <input type="text" id="myInput5">
+    <button onclick="lockInput()">Заблокировать инпут</button>
+
+    <!-- Задание 6 -->
+    <input type="checkbox" id="myCheckbox">
+    <button onclick="checkStatus()">Проверить чекбокс</button>
+    <p id="myParagraph6"></p>
+
+    <!-- Задание 7 -->
+    <input type="text" id="myInput7">
+    <p id="myParagraph7"></p>
+
+    <script>
+        // Задание 1
+        function styleDiv1() {
+            var div = document.getElementById("myDiv1");
+            div.style.width = "200px";
+            div.style.height = "100px";
+            div.style.border = "2px solid black";
+        }
+
+        // Задание 2
+        function styleDiv2() {
+            var div = document.getElementById("myDiv2");
+            div.style.fontSize = "20px";
+            div.style.borderTop = "3px solid blue";
+            div.style.backgroundColor = "yellow";
+        }
+
+        // Задание 3
+        function strikeThrough() {
+            var paragraph = document.getElementById("myParagraph3");
+            paragraph.style.textDecoration = "line-through";
+        }
+
+        function makeBold() {
+            var paragraph = document.getElementById("myParagraph3");
+            paragraph.style.fontWeight = "bold";
+        }
+
+        function makeRed() {
+            var paragraph = document.getElementById("myParagraph3");
+            paragraph.style.color = "red";
+        }
+
+        // Задание 4
+        document.getElementById("myTextarea").addEventListener("blur", function() {
+            var text = this.value;
+            document.getElementById("myParagraph4").textContent = text;
+        });
+
+        // Задание 5
+        function lockInput() {
+            var input = document.getElementById("myInput5");
+            input.disabled = true;
+        }
+
+        // Задание 6
+        function checkStatus() {
+            var checkbox = document.getElementById("myCheckbox");
+            var paragraph = document.getElementById("myParagraph6");
+            if (checkbox.checked) {
+                paragraph.textContent = "привет";
+            } else {
+                paragraph.textContent = "пока";
+            }
+        }
+
+        // Задание 7
+        document.getElementById("myInput7").addEventListener("input", function() {
+            var text = this.value;
+            document.getElementById("myParagraph7").textContent = text;
+        });
+    </script>
+
+</body>
+</html>

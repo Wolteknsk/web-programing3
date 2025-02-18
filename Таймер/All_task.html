@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задания</title>
+</head>
+<body>
+    <!-- Задание 1 -->
+    <h2>Задание 1: Увеличение числа каждую секунду</h2>
+    <button id="increaseButton">Начать увеличение</button>
+    <p id="counter1">0</p>
+
+    <!-- Задание 2 -->
+    <h2>Задание 2: Уменьшение числа до нуля</h2>
+    <button id="decreaseButton">Начать уменьшение</button>
+    <p id="counter2">10</p>
+
+    <!-- Задание 3 -->
+    <h2>Задание 3: Обратный отсчет при потери фокуса</h2>
+    <input type="number" id="inputFocus" placeholder="Введите число">
+    <p id="focusCounter"></p>
+
+    <!-- Задание 4 -->
+    <h2>Задание 4: Обратный отсчет по кнопке</h2>
+    <input type="number" id="inputButton" placeholder="Введите число">
+    <button id="startButton">Начать обратный отсчет</button>
+    <p id="buttonCounter"></p>
+
+    <!-- Задание 5 -->
+    <h2>Задание 5: Сообщение через 10 секунд</h2>
+    <p id="messageParagraph"></p>
+
+    <script>
+        // Задание 1
+        let increaseInterval;
+        document.getElementById('increaseButton').addEventListener('click', function() {
+            let counter = parseInt(document.getElementById('counter1').textContent);
+            increaseInterval = setInterval(() => {
+                document.getElementById('counter1').textContent = ++counter;
+            }, 1000);
+        });
+
+        // Задание 2
+        let decreaseInterval;
+        document.getElementById('decreaseButton').addEventListener('click', function() {
+            let counter = parseInt(document.getElementById('counter2').textContent);
+            if (decreaseInterval) clearInterval(decreaseInterval); 
+            decreaseInterval = setInterval(() => {
+                if (counter > 0) {
+                    document.getElementById('counter2').textContent = --counter;
+                } else {
+                    clearInterval(decreaseInterval);
+                }
+            }, 1000);
+        });
+
+        // Задание 3
+        document.getElementById('inputFocus').addEventListener('blur', function() {
+            const input = this;
+            const counterElement = document.getElementById('focusCounter');
+            let count = parseInt(input.value);
+
+            if (isNaN(count) || count <= 0) {
+                counterElement.textContent = 'Введите корректное число';
+                return;
+            }
+
+            counterElement.textContent = count;
+            let focusInterval = setInterval(() => {
+                if (count > 0) {
+                    counterElement.textContent = --count;
+                } else {
+                    clearInterval(focusInterval); 
+                    counterElement.textContent = 'Отсчет завершен';
+                }
+            }, 1000);
+        });
+
+        // Задание 4
+        document.getElementById('startButton').addEventListener('click', function() {
+            const input = document.getElementById('inputButton');
+            const counterElement = document.getElementById('buttonCounter');
+            let count = parseInt(input.value);
+
+            if (isNaN(count) || count <= 0) {
+                counterElement.textContent = 'Введите корректное число';
+                return;
+            }
+
+            counterElement.textContent = count;
+            let buttonInterval = setInterval(() => {
+                if (count > 0) {
+                    counterElement.textContent = --count;
+                } else {
+                    clearInterval(buttonInterval);
+                    counterElement.textContent = 'Отсчет завершен';
+                }
+            }, 1000);
+        });
+
+        // Задание 5
+        setTimeout(() => {
+            document.getElementById('messageParagraph').textContent = 'Сообщение появилось через 10 секунд!';
+        }, 10000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задания</title>
+</head>
+<body>
+    <!-- Элементы для работы с функциями -->
+    <p id="paragraph1">Абзац 1</p>
+    <p class="paragraphs">Абзац 2</p>
+    <p class="paragraphs">Абзац 3</p>
+    <ul id="list"></ul>
+
+    <script>
+        // Задание 1
+        function setAttr(selector, attrName, attrValue) {
+            const element = document.querySelector(selector);
+            if (element) {
+                element.setAttribute(attrName, attrValue);
+            } else {
+                console.error(`Элемент с селектором "${selector}" не найден.`);
+            }
+        }
+        setAttr('#paragraph1', 'title', 'Новый атрибут');
+        setAttr('.paragraphs', 'data-custom', 'custom-value');
+
+        // Задание 2
+        function appendTextSelector(selector, text) {
+            const elements = document.querySelectorAll(selector);
+            elements.forEach(element => {
+                element.textContent += text;
+            });
+        }
+
+        appendTextSelector('p', ' (текст добавлен через селектор)');
+
+        // Задание 3
+        function appendText(element, text) {
+            if (element) {
+                element.textContent += text;
+            } else {
+                console.error('Переданный DOM элемент не существует.');
+            }
+        }
+        const paragraph1 = document.getElementById('paragraph1');
+        appendText(paragraph1, ' (текст добавлен напрямую через DOM элемент)');
+
+        // Задание 4
+        const paragraphs = document.querySelectorAll('p');
+        paragraphs.forEach(paragraph => {
+            appendText(paragraph, '!');
+        });
+
+        // Задание 5
+        function appendElem(ulElement, text) {
+            if (ulElement && ulElement.tagName === 'UL') {
+                const newLi = document.createElement('li');
+                newLi.textContent = text;
+                ulElement.appendChild(newLi);
+            } else {
+                console.error('Переданный элемент не является тегом <ul>.');
+            }
+        }
+        const list = document.getElementById('list');
+        appendElem(list, 'Элемент 1');
+        appendElem(list, 'Элемент 2');
+        appendElem(list, 'Элемент 3');
+    </script>
+</body>
+</html>
