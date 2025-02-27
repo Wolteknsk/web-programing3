@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function calculateSquareRoot(number) {
+            if (number < 0) {
+                throw new Error("Невозможно извлечь корень из отрицательного числа");
+            }
+                return Math.sqrt(number);
+        }
+
+        try {
+            let result = calculateSquareRoot(-1);
+            console.log(result);
+        }           
+        catch (error) {
+        console.error(error.message);
+        }
+
+
+        try {
+            let result = calculateSquareRoot(16); 
+            console.log(result); 
+        }           
+        catch (error) {
+        onsole.error(error.message);
+        }
+    </script>
+</body>
+</html>

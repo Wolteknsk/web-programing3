@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Парсинг JSON</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 8px;
+            background-color: #f0f0f0;
+            margin-bottom: 5px;
+            border-radius: 4px;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="output"></div>
+
+    <script>
+        const jsonString = `
+            ["Яблоко", "Банан", "Апельсин"
+        `;
+
+        function parseAndDisplayJSON(jsonString) {
+            const outputDiv = document.getElementById('output');
+
+            try {
+                const data = JSON.parse(jsonString);
+
+
+                if (Array.isArray(data)) {
+                    const ul = document.createElement('ul');
+                    data.forEach(item => {
+                        const li = document.createElement('li');
+                        li.textContent = item;
+                        ul.appendChild(li);
+                    });
+                    outputDiv.appendChild(ul);
+                } else {
+                    throw new Error("JSON не содержит массив");
+                }
+            } catch (error) {
+
+                outputDiv.innerHTML = `<p class="error">На странице случилась ошибка: ${error.message}</p>`;
+            }
+        }
+
+        parseAndDisplayJSON(jsonString);
+    </script>
+</body>
+</html>
